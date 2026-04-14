@@ -24,6 +24,13 @@ export default function App() {
     setShowTutorial(true);
   };
 
+  const retryLevel = () => {
+    setGameKey(prev => prev + 1);
+    setGameState('playing');
+    // We don't show tutorial again on retry to keep it fast
+    setShowTutorial(false);
+  };
+
   const selectLevel = (level: number) => {
     setCurrentLevel(level);
     setGameKey(prev => prev + 1);
@@ -181,7 +188,7 @@ export default function App() {
                     </p>
                     <div className="flex flex-col gap-3">
                       <button 
-                        onClick={gameState === 'winPrototype' ? goToMenu : (gameState === 'win' ? nextLevel : startGame)}
+                        onClick={gameState === 'winPrototype' ? goToMenu : (gameState === 'win' ? nextLevel : (gameState === 'gameOver' ? retryLevel : startGame))}
                         className={cn(
                           "w-full py-4 font-bold rounded-full transition-all uppercase tracking-[0.2em] text-xs",
                           gameState === 'gameOver' ? "bg-red-500 text-white hover:bg-red-600" : "bg-green-500 text-white hover:bg-green-600"
