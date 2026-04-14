@@ -1,0 +1,6 @@
+{
+  "name": "Shadow Steps",
+  "description": "A 2D puzzle-platformer where light is a threat and shadows are your only path. Manipulate light sources to create shadow bridges and navigate through the void.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}
